@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import io.flutter.embedding.android.FlutterFragment
@@ -28,13 +27,8 @@ class FlutterHostFragment : Fragment() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-//		key = System.currentTimeMillis().toString()
 		key = "test_key"
 		Log.d("FlutterHostFragment", "onCreate $key")
-		prepareEngine()
-	}
-
-	private fun prepareEngine() {
 		if (!FlutterEngineCache.getInstance().contains(key)) {
 			FlutterEngine(requireContext()).apply {
 				FlutterEngineCache.getInstance().put(key, this)
@@ -64,14 +58,6 @@ class FlutterHostFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		Log.d("FlutterHostFragment", "onViewCreated $key")
-
-		view.findViewById<Button>(R.id.closeWrapper).setOnClickListener {
-			findNavController().popBackStack()
-		}
-
-		view.findViewById<Button>(R.id.reOpenFlutter).setOnClickListener {
-			showFlutterFragment()
-		}
 
 		flutterEngine?.dartExecutor?.binaryMessenger?.let {
 			Log.d("FlutterHostFragment", "onViewCreated $it")

@@ -23,22 +23,11 @@ class BackButtonScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Back via Navigator.pop()'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                _channel.invokeMethod('closeFlutter');
-              },
-              child: Text('Back via MethodChannel'),
-            ),
-          ],
+        child: ElevatedButton(
+          onPressed: () {
+            _channel.invokeMethod('closeFlutter');
+          },
+          child: Text('Back'),
         ),
       ),
     );
