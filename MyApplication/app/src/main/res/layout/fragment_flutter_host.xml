@@ -1,0 +1,34 @@
+<FrameLayout
+	xmlns:android = "http://schemas.android.com/apk/res/android"
+	android:layout_width = "match_parent"
+	android:layout_height = "match_parent"
+	android:background = "#84BF9B"
+	android:gravity = "center"
+	android:orientation = "vertical"
+	>
+
+<!--	<Button-->
+<!--		android:id = "@+id/closeWrapper"-->
+<!--		android:layout_width = "wrap_content"-->
+<!--		android:layout_height = "wrap_content"-->
+<!--		android:layout_gravity = "center_horizontal"-->
+<!--		android:layout_marginTop = "200dp"-->
+<!--		android:text = "Close Wrapper Fragment"-->
+<!--		/>-->
+
+<!--	<Button-->
+<!--		android:id = "@+id/reOpenFlutter"-->
+<!--		android:layout_width = "wrap_content"-->
+<!--		android:layout_height = "wrap_content"-->
+<!--		android:layout_gravity = "center_horizontal"-->
+<!--		android:layout_marginTop = "300dp"-->
+<!--		android:text = "Reopen Flutter"-->
+<!--		/>-->
+
+	<FrameLayout
+		android:id = "@+id/flutter_container"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		android:background = "#84BF9B"
+		/>
+</FrameLayout>
