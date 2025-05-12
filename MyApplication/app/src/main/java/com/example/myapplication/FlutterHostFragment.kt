@@ -16,6 +16,7 @@ import io.flutter.plugin.common.MethodChannel
 class FlutterHostFragment : Fragment() {
 
 	private lateinit var key: String
+	private var methodChannel: MethodChannel? = null
 
 	private val flutterFragment: FlutterFragment by lazy {
 		FlutterFragment
@@ -61,8 +62,8 @@ class FlutterHostFragment : Fragment() {
 
 		flutterEngine?.dartExecutor?.binaryMessenger?.let {
 			Log.d("FlutterHostFragment", "onViewCreated $it")
-			MethodChannel(it, "com.example/my_channel")
-				.setMethodCallHandler { call, _ ->
+			methodChannel = MethodChannel(it, "com.example/my_channel")
+			methodChannel?.setMethodCallHandler { call, _ ->
 					if (call.method == "closeFlutter") {
 						findNavController().popBackStack()
 					}
@@ -73,6 +74,7 @@ class FlutterHostFragment : Fragment() {
 	override fun onDestroyView() {
 		super.onDestroyView()
 		Log.d("FlutterHostFragment", "onDestroyView $flutterEngine")
+		methodChannel?.setMethodCallHandler(null)
 		flutterEngine?.destroy()
 		FlutterEngineCache.getInstance().remove(key)
 	}
